@@ -1,0 +1,108 @@
+class Confucianism {
+
+	public:
+		Confucianism() {
+			virtue_ = "Benevolence";
+			harmony_in_society_ = 100;
+			wisdom = 0;
+			filial_piety_ = 100;
+			respect_for_elders_ = 100;
+			balanced_life_ = false;
+			}
+			
+			void study_ancient_text(const std::string& text) {
+				wisdom_ += 10;
+				teaching_.push_back(text);
+				
+				if (wisdom >= 50) {
+					std::cout << "The limits of wisdom are none. Keep going." <<std::endl;
+				}
+			
+			}
+			
+			void addVirtue(const std::string& newVirtue) {
+				virtue_.push_back(newVirtue);
+				std::cout << "You have learned this new virtue" << endl;
+			
+			}
+			
+			
+			
+			void lectureDisrespectfulYoungsters() {
+				if (respect_for_elders_ >= 100) {
+					std::cout << "Keep respecting your elders" << std::endl;
+				} else if (respect_for_elders_ >= 80) {
+					std::cout << "You show good respect" << std::endl;
+				} else if (respect_for_elders_ >= 60) {
+					std::cout << "Rather you respect your elders..." << std::endl;
+				} else if (respect_for_elders_ >= 40) {
+					std::cout << "An ungrateful child doesn't deserve much" << endl;
+				} else {
+					std::cout << "Okay listen here you little shit..." << endl;
+				}
+			}
+			
+			void perform_rites() {
+				respect_for_elders_ += 10;
+				filial_piety_ += 20;
+			}
+			
+			void upholdFilialPiety(std::string const Parents) {
+				if (Parents == Abusive) {
+					throw std::philosophical_problem("Uhhh... I don't think this would be acceptable...");
+				} else if (filial_piety_ >= 100) {
+					std::cout << "Filial Piety has been upheld, keep doing so" << std::endl;				
+				} else if (filial_piety_ >= 80) {
+					std::cout << "They gave you much more, keep going" << std::endl;				
+				} else if (filial_piety_ >= 60) {
+					std::cout << "Oh dear, You must do better" << std::endl;
+				} else if (filial_piety_ >= 40) {
+					std::cout << "What have your parents done?" << std::endl;
+				} else {
+					std::cout << "Tsk tsk tsk... such a foolish child" << std::endl;
+				}
+			}
+			
+			std::string getVirtue(int index) const {
+				if(index > virtue_.getSize()){
+					throw std::range_error ("You cannot recall what you do not have");
+				}
+				
+				if (index >= 0 && index < virtue_.getSize()) {
+					return virtue_[index];
+				}
+			}
+			
+			int getWisdom() const {
+				return wisdom_;
+			}
+			
+			std::string recallTeaching(int index) {
+				if(index > teaching.getSize()){
+					throw std::range_error ("You cannot recall what you do not have");
+				}
+				
+				if (index >= 0 && index < teachings.getSize()) {
+					return teaching_[index];
+				}
+			}
+			
+			bool balanced_life() const {
+				return balanced_life_;
+			}
+			
+			std::string walk_the_Dao(){
+				throw std::range_error("YOU DIRTY DAOIST!!!");
+			}
+	
+	private:
+		std::vector<std::string> virtue_;
+		int respect_for_elders_;
+		int harmony_in_society_;
+		int wisdom_;
+		int filial_piety_;
+		bool balanced_life_;
+		std::vector<std::string> teaching_;
+
+	};
+}
