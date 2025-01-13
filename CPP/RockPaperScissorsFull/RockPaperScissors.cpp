@@ -19,26 +19,31 @@ int main() {
     cout << "Press 1 for Rock" << endl;
     cout << "Press 2 for Paper" << endl;
     cout << "Press 3 for Scissors" << endl;
-
+    cout << "What do you call?" << endl;
+    int userChoice;
+    cin >> userChoice;
     int computerChoice = rngMechanic();
     try {
-        cout << "What do you call?" << endl;
-        int a;
-        cin >> a;
-        
-        checkRange(a);
+        checkRange(userChoice);
     } 
     catch (const std::range_error& e) {
         // Handle the exception
-        std::cerr << "Error: " << e.what() << std::endl;
+        std::cerr << "Error: " << e.what() << endl;
     }
-     if(computerChoice == 1) {
+    if(computerChoice == 1) {
+        cout << computerChoice << endl;
         cout << "Your opponent has chosen Rock" << endl;
     } else if (computerChoice == 2) {
+        cout << computerChoice << endl;
         cout << "Your opponent has chosen Paper" << endl;
     } else {
+        cout << computerChoice << endl;
         cout <<"Your opponent has chosen Scissors" << endl;
     }
+    
+    userWinner(userChoice, computerChoice);
+    userLoser(computerChoice, userChoice);
+
     return 0;
 }
 
@@ -55,12 +60,30 @@ void checkRange(int userInput) {
     }
 }
 
-bool userWinner(const int a, const int b, bool user_win) { //a is user input, b is computer input
+bool userWinner(const int a, const int b) { //a is user input, b is computer input
     if (a == 1 && b == 3) {
         cout << "Rock beats scissors, you win!" << endl;
+        return true;
     } else if (a == 3 && b == 2) {
-        cout << "Scissor beats paper, you win" << endl;
+        cout << "Scissor beats paper, you win!" << endl;
+        return true;
     } else if (a == 2 && b == 1) {
-        cout << "Paper beats Rock, You Win" << endl;
+        cout << "Paper beats Rock, you win!" << endl;
+        return true;
     }
+    return false;
+}
+
+bool userLoser(const int a, const int b) {
+    if (a == 1 && b == 3) {
+        cout << "Rock beats scissors, you lose!" << endl;
+        return true;
+    } else if (a == 3 && b == 2) {
+        cout << "Scissor beats paper, you lose!" << endl;
+        return true;
+    } else if (a == 2 && b == 1) {
+        cout << "Paper beats Rock, you lose!" << endl;
+        return true;
+    }
+    return false;
 }
